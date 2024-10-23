@@ -17,7 +17,7 @@ DIR_NAME=$(basename "$1")
 docker cp "$1" ${CONTAINER_NAME}:/to-be-restored
 
 # Ejecutar mongorestore en el contenedor
-docker exec -it ${CONTAINER_NAME} mongorestore -h 127.0.0.1 --drop --gzip --db $DIR_NAME /to-be-restored/$DIR_NAME -u root -p example --authenticationDatabase ${DB_AUTH}
+docker exec -it ${CONTAINER_NAME} mongorestore -h 127.0.0.1 --drop --gzip --db $DIR_NAME /to-be-restored/$DIR_NAME -u ${DB_USER} -p ${DB_PASS} --authenticationDatabase ${DB_AUTH}
 
 # Comprobar si la restauración fue exitosa
 if [ $? -eq 0 ]; then

@@ -7,7 +7,7 @@ else
 fi
 
 if [ "$(docker ps -q -f name=${CONTAINER_NAME})" ]; then
-    docker exec -it ${CONTAINER_NAME} mongosh -u root -p example --authenticationDatabase ${DB_AUTH}
+    docker exec -it ${CONTAINER_NAME} mongosh -u ${DB_USER} -p ${DB_PASS} --authenticationDatabase ${DB_AUTH}
 else
 	echo "Container '${CONTAINER_NAME}' is not running."
 fi
